@@ -1,16 +1,16 @@
-import { useQuery } from "@apollo/client";
-import { useState, useEffect } from "react";
-import { GET_FOLLOWEDS, GET_FOLLOWERS } from "../../../../gql/follow";
-import ModalBasic from "../../../Modal/ModalBasic";
-import ListUsers from "../../ListUsers/ListUsers";
+import { useQuery } from "@apollo/client"
+import { useState, useEffect } from "react"
+import { GET_FOLLOWEDS, GET_FOLLOWERS } from "../../../../gql/follow"
+import ModalBasic from "../../../Modal/ModalBasic"
+import ListUsers from "../../ListUsers/ListUsers"
 
-import "./Followers.css";
+import "./Followers.scss"
 
 const Followers = (props) => {
-	const { username, totalPublications } = props;
-	const [showModal, setShowModal] = useState(false);
-	const [titleModal, setTitleModal] = useState("");
-	const [childrenModal, setChildrenModal] = useState(null);
+	const { username, totalPublications } = props
+	const [showModal, setShowModal] = useState(false)
+	const [titleModal, setTitleModal] = useState("")
+	const [childrenModal, setChildrenModal] = useState(null)
 
 	const {
 		data: dataFollowers,
@@ -21,7 +21,7 @@ const Followers = (props) => {
 		variables: {
 			username,
 		},
-	});
+	})
 
 	const {
 		data: dataFolloweds,
@@ -32,43 +32,43 @@ const Followers = (props) => {
 		variables: {
 			username,
 		},
-	});
+	})
 
 	useEffect(() => {
-		startPollingFollowers(3000);
+		startPollingFollowers(3000)
 		return () => {
-			stopPollingFollowers();
-		};
-	}, [startPollingFollowers, stopPollingFollowers]);
+			stopPollingFollowers()
+		}
+	}, [startPollingFollowers, stopPollingFollowers])
 
 	useEffect(() => {
-		startPollingFolloweds(3000);
+		startPollingFolloweds(3000)
 		return () => {
-			stopPollingFolloweds();
-		};
-	}, [startPollingFolloweds, stopPollingFolloweds]);
+			stopPollingFolloweds()
+		}
+	}, [startPollingFolloweds, stopPollingFolloweds])
 
-	if (loadingFollowers || loadingFolloweds) return null;
-	console.log(dataFolloweds);
+	if (loadingFollowers || loadingFolloweds) return null
+	console.log(dataFolloweds)
 
-	const { getFollowers } = dataFollowers;
-	const { getFolloweds } = dataFolloweds;
+	const { getFollowers } = dataFollowers
+	const { getFolloweds } = dataFolloweds
 
 	const openFollowers = () => {
-		setTitleModal("Seguidores");
+		setTitleModal("Seguidores")
 		setChildrenModal(
 			<ListUsers users={getFollowers} setShowModal={setShowModal} />
-		);
-		setShowModal(true);
-	};
+		)
+		setShowModal(true)
+	}
 
 	const openFolloweds = () => {
-		setTitleModal("Seguidos");
+		setTitleModal("Seguidos")
 		setChildrenModal(
 			<ListUsers users={getFolloweds} setShowModal={setShowModal} />
-		);
-		setShowModal(true);
-	};
+		)
+		setShowModal(true)
+	}
 
 	return (
 		<>
@@ -84,7 +84,7 @@ const Followers = (props) => {
 				{childrenModal}
 			</ModalBasic>
 		</>
-	);
-};
+	)
+}
 
-export default Followers;
+export default Followers

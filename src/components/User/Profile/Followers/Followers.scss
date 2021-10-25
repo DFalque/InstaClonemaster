@@ -1,0 +1,9 @@
+.Followers{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    
+    p{
+        cursor: pointer;
+    }
+}

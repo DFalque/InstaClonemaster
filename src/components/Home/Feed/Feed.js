@@ -6,6 +6,7 @@ import { GET_PUBLICATION_FOLLOWEDS } from "../../../gql/publications"
 import avatar from "../../../img/avatar.png"
 import ModalPublication from "../../Modal/ModalPublication"
 import { useEffect, useState } from "react"
+import Actions from "../../Modal/ModalPublication/Actions/Actions"
 
 const Feed = () => {
 	const [showModal, setShowModal] = useState(false)
@@ -47,6 +48,9 @@ const Feed = () => {
 								style={{ backgroundImage: `url("${publication.file}")` }}
 								onClick={() => openPublication(publication)}
 							></div>
+							<div className="Feed__box-action">
+								<Actions publication={publication} />
+							</div>
 						</div>
 					)
 				})}

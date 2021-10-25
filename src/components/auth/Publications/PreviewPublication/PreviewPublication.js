@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Image } from "semantic-ui-react"
 import ModalPublication from "../../../Modal/ModalPublication"
+import "./PreviewPublication.scss"
 
 const PreviewPublication = (props) => {
 	const [showModal, setShowModal] = useState(false)
