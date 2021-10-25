@@ -33,12 +33,11 @@ const Feed = () => {
 	return (
 		<>
 			<div className="Feed">
-				<h2>Feeed</h2>
 				{getPublicationFolloweds.map((publication, index) => {
 					return (
 						<div className="Feed__box" key={index}>
 							<Link to={`/${publication.idUser.username}`}>
-								<div key={index} className="feed_box-user">
+								<div key={index} className="Feed__box-user">
 									<Image src={publication.idUser.avatar || avatar} avatar />
 									<span> {publication.idUser.name}</span>
 								</div>
@@ -55,8 +54,8 @@ const Feed = () => {
 			{showModal ? (
 				<ModalPublication
 					show={showModal}
-					setShow={setShowModal}
-					publication={setPublicationSelected}
+					onClose={setShowModal}
+					publication={publicationSelected}
 				/>
 			) : null}
 		</>
